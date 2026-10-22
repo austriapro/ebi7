@@ -1,5 +1,9 @@
 # ebInterface 7.0 Decision Log
 
+## Workshop 3, 22.10.2026
+
+* Präsentation ÖBB zur Vermittlungsproblematik
+
 ## Workshop 2, 08.10.2026
 
 * Ab Workshop 3 werden wir die Meetings auf 2h verlängern (14 bis 16 Uhr)

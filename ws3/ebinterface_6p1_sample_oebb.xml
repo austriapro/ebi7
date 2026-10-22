@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Invoice xmlns="http://www.ebinterface.at/schema/6p1/"
+         xmlns:ext="urn:fdc:example-extension" 
+         GeneratingSystem="Demo " 
+         DocumentType="Invoice" 
+         InvoiceCurrency="EUR" 
+         DocumentTitle="Testrechnung ph-ebinterface" 
+         Language="de">
+	<InvoiceNumber>RNR 4712</InvoiceNumber>
+	<InvoiceDate>2020-01-12</InvoiceDate>
+	<Biller>
+		<VATIdentificationNumber>ATU00000006</VATIdentificationNumber>
+		<Address>
+			<Name>Lieferant Mustermann</Name>
+			<Street>Favoritenstraße 329/32</Street>
+			<POBox>4711</POBox>
+			<Town>Wien</Town>
+			<ZIP>1040</ZIP>
+			<Country CountryCode="AT">Österreich</Country>
+			<Phone>+43 1 58801 8857452</Phone>
+			<Email>office@example.org</Email>
+		</Address>
+		<Contact>
+			<Salutation>Herr</Salutation>
+			<Name>Max Mustermann</Name>
+		</Contact>
+		<InvoiceRecipientsBillerID>ID39384</InvoiceRecipientsBillerID>
+	</Biller>
+	<InvoiceRecipient>
+		<VATIdentificationNumber>ATU00000009</VATIdentificationNumber>
+    <OrderReference>
+      <OrderID>1293</OrderID>
+      <ReferenceDate>2016-02-12</ReferenceDate>
+      <Description>Faxbestellung</Description>
+    </OrderReference>
+		<Address>
+			<Name>VGB GmbH &amp; Co KG</Name>
+			<Street>Walserbergstraße 32</Street>
+			<Town>Salzburg</Town>
+			<ZIP>5021</ZIP>
+			<Country CountryCode="AT">Österreich</Country>
+			<Phone>+43 662 565 585</Phone>
+			<Email>office@vgbgmbh.at</Email>
+		</Address>
+		<Contact>
+			<Salutation>Frau</Salutation>
+			<Name>Maxima Musterfrau</Name>
+		</Contact>
+		<BillersInvoiceRecipientID>39494</BillersInvoiceRecipientID>
+	</InvoiceRecipient>
+	<Details>
+		<ItemList>
+      <ListLineItem>
+        <PositionNumber>1</PositionNumber>
+        <Description>Eigenleistung ÖBB</Description>
+        <Quantity Unit="KM">136.77</Quantity>
+        <UnitPrice>1.00</UnitPrice>
+        <TaxItem>
+          <TaxableAmount>136.77</TaxableAmount>
+          <TaxPercent TaxCategoryCode="S">10</TaxPercent>
+        </TaxItem>
+        <LineItemAmount>136.77</LineItemAmount>
+      </ListLineItem>
+      
+			<ListLineItem>
+				<PositionNumber>2</PositionNumber>
+				<Description>Fremdleistung</Description>
+				<Quantity Unit="KM">4.60</Quantity>
+				<UnitPrice>1.00</UnitPrice>
+				<!-- äußeres TaxItem -->
+				<TaxItem>
+					<TaxableAmount>4.60</TaxableAmount>
+					<!-- Durchläufer/Margenbesteuerung -->
+					<TaxPercent TaxCategoryCode="O">0</TaxPercent>
+					<TaxAmount>0.00</TaxAmount>
+				</TaxItem>
+				<LineItemAmount>4.60</LineItemAmount>
+				<!-- Start - optional 0..1 -->
+				<ThirdpartySupplier>
+				  <!-- Pflichtfeld 1..1 -->
+          <VATIdentificationNumber>ATU00000000</VATIdentificationNumber>
+          <!-- Pflichtfeld 1..1 -->
+          <Address>
+            <Name>Mariazeller Bahn</Name>
+            <Street>Hauptstr. 1</Street>
+            <Town>Mariazell</Town>
+            <ZIP>9999</ZIP>
+            <Country CountryCode="AT">Österreich</Country>
+            <Phone>+43 123456789</Phone>
+            <Email>office@mariazellerbahn.at</Email>
+          </Address>
+          <!-- Pflichtfeld 1..1 -->
+          <!-- inneres TaxItem -->
+          <TaxItem>
+            <TaxableAmount>4.18</TaxableAmount>
+            <!-- Echter Steuersatz/Vorsteuerabzugsfähig -->
+            <TaxPercent TaxCategoryCode="S">10</TaxPercent>
+            <TaxAmount>0.42</TaxAmount>
+            <!-- Summe TaxableAmount+TaxAmount muss identisch sein für außen und innen -->
+          </TaxItem>
+				</ThirdpartySupplier>
+        <!-- End -->
+			</ListLineItem>
+		</ItemList>
+	</Details>
+	<Tax>
+	  <!-- Variante heute:-->
+    <TaxItem>
+      <TaxableAmount>136.77</TaxableAmount>
+      <TaxPercent TaxCategoryCode="S">10</TaxPercent>
+      <TaxAmount>13.68</TaxAmount>
+    </TaxItem>
+    <TaxItem>
+      <TaxableAmount>4.60</TaxableAmount>
+      <TaxPercent TaxCategoryCode="O">0</TaxPercent>
+      <TaxAmount>0.00</TaxAmount>
+    </TaxItem>
+    
+    <!-- Variante Zukunft 1? -->
+    <TaxItem>
+      <TaxableAmount>136.77</TaxableAmount>
+      <TaxPercent TaxCategoryCode="S">10</TaxPercent>
+      <TaxAmount>13.68</TaxAmount>
+      <Extension>
+        <VATIdentificationNumber>ATU00000006</VATIdentificationNumber>
+      </Extension>
+    </TaxItem>
+    <TaxItem>
+      <TaxableAmount>4.18</TaxableAmount>
+      <TaxPercent TaxCategoryCode="S">10</TaxPercent>
+      <TaxAmount>0.42</TaxAmount>
+      <Extension>
+        <VATIdentificationNumber>ATU00000000</VATIdentificationNumber>
+      </Extension>
+    </TaxItem>
+    
+    <!-- Variante Zukunft 2? -->
+    <TaxItem>
+      <TaxableAmount>140.95</TaxableAmount>
+      <TaxPercent TaxCategoryCode="S">10</TaxPercent>
+      <TaxAmount>14.10</TaxAmount>
+    </TaxItem>
+    
+    <!-- Variante Zukunft 3? -->
+    <TaxItem>
+      <TaxableAmount>140.95</TaxableAmount>
+      <TaxPercent TaxCategoryCode="S">10</TaxPercent>
+      <TaxAmount>14.10</TaxAmount>
+      <Extension>
+        <ext:TaxPerSupplier>
+          <ext:VATIdentificationNumber>ATU00000006</ext:VATIdentificationNumber>
+          <ext:TaxableAmount>136.77</ext:TaxableAmount>
+          <ext:TaxAmount>13.68</ext:TaxAmount>
+        </ext:TaxPerSupplier>
+        <ext:TaxPerSupplier>
+          <ext:VATIdentificationNumber>ATU00000000</ext:VATIdentificationNumber>
+          <ext:TaxableAmount>4.18</ext:TaxableAmount>
+          <ext:TaxAmount>0.42</ext:TaxAmount>
+        </ext:TaxPerSupplier>
+      </Extension>
+    </TaxItem>
+	</Tax>
+	
+	<TotalGrossAmount>12</TotalGrossAmount>
+	<PayableAmount>13.5</PayableAmount>
+	<PaymentMethod>
+		<Comment>Zahlbar per Überweisung. Bitte SEPA Voraussetzungen berücksichtigen.</Comment>
+		<UniversalBankTransaction ConsolidatorPayable="true">
+			<BeneficiaryAccount>
+				<IBAN>23424234</IBAN>
+				<BankAccountOwner>Maxima Kontofrau</BankAccountOwner>
+			</BeneficiaryAccount>
+		</UniversalBankTransaction>
+	</PaymentMethod>
+	<PaymentConditions>
+		<DueDate>2020-08-13</DueDate>
+	</PaymentConditions>
+</Invoice>
