@@ -2,7 +2,7 @@
 
 ## Workshop 3, 22.10.2026
 
-* Präsentation ÖBB zur Vermittlungsproblematik
+* Präsentation ÖBB zur Vermittlungs-Problematik
 
 ## Workshop 2, 08.10.2026
 
@@ -17,5 +17,7 @@
 
 ### Tasks
 
-* ÖBB präsentiert Vermittlungs-Problematik in WS 3 am 22.10.2026
+* ÖBB präsentiert Kommissionierung-Problematik in einem der nächsten WS
+* Gerhard/Philip deponieren die Vermittlungs-Thematik in CEN TC 434 für das Amendment der EN 16931
 * Mitglieder sollen evaluieren, ob die Schlussrechnung außerhalb von "Construction" Verwendung hat -> wenn ja, ggf. ansuchen um Code bei UN ECE
+* Philip Codeliste klären: https://github.com/austriapro/ebi7/issues/6
